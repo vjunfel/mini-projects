@@ -13,28 +13,43 @@ filter.addEventListener('keyup', filterItem);
 
 function createItem(e) {
 	e.preventDefault();
-
 	const inputValue = myField.value.trim();
 
-	if (inputValue.length !== 0) {
-		const li = document.createElement('li');
-		const button = createBtn('btnDelete');
-
-		li.appendChild(document.createTextNode(inputValue));
-		li.appendChild(button);
-		myList.appendChild(li);
-	} else {
+	if (inputValue.length === 0) {
 		const warningMessage = document.querySelector('#warning');
 		warningMessage.classList.add('warn');
 
 		setTimeout(() => {
 			warningMessage.classList.remove('warn');
 		}, 2000);
+	} else {
+		addItemToDOM(inputValue);
+		addToLocalStorage(inputValue);
 	}
-
 	myField.value = '';
 	myField.focus();
 	checkUI();
+}
+
+function addItemToDOM(newItem) {
+	const li = document.createElement('li');
+	li.appendChild(document.createTextNode(newItem));
+
+	const button = createBtn('btnDelete');
+	li.appendChild(button);
+	myList.appendChild(li);
+}
+
+function addToLocalStorage(newItem) {
+	let itemsFromStorage;
+
+	if (localStorage.getItem('items') === null) {
+		itemsFromStorage = [];
+	} else {
+		itemsFromStorage = JSON.parse(localStorage.getItem('items'));
+	}
+	itemsFromStorage.push(newItem);
+	localStorage.setItem('items', JSON.stringify(itemsFromStorage));
 }
 
 function createBtn(classes) {
@@ -61,10 +76,11 @@ function removeItemList(e) {
 }
 
 function clearLists() {
-	while (myList.firstChild) {
-		myList.firstChild.remove();
+	if (confirm('Are you sure you want to delete all the list?')) {
+		while (myList.firstChild) {
+			myList.firstChild.remove();
+		}
 	}
-
 	checkUI();
 }
 
