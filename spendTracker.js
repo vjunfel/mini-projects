@@ -3,11 +3,13 @@ const myField = document.querySelector('#my-field');
 const myList = document.querySelector('#my-list');
 const btnDelete = document.querySelector('.btnDelete');
 const clearAll = document.querySelector('#clear');
+const filter = document.querySelector('#filter');
 
 // Event Listener
 myForm.addEventListener('submit', createItem);
 myList.addEventListener('click', removeItemList);
 clearAll.addEventListener('click', clearLists);
+filter.addEventListener('keyup', filterItem);
 
 function createItem(e) {
 	e.preventDefault();
@@ -78,4 +80,19 @@ function checkUI() {
 		filter.classList.remove('hide');
 		clear.style.display = 'block';
 	}
+}
+
+function filterItem(e) {
+	const filterInput = e.target.value.toLowerCase().trim();
+	const itemList = myList.querySelectorAll('li');
+
+	itemList.forEach((item) => {
+		const itemName = item.firstChild.textContent.toLowerCase();
+
+		if (itemName.indexOf(filterInput) !== -1) {
+			item.style.display = 'flex';
+		} else {
+			item.style.display = 'none';
+		}
+	});
 }

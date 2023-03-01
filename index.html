@@ -11,11 +11,10 @@
     <link rel="stylesheet" href="style.css">
 
     <script src="darkmode.js" defer></script>
-    <script src="listing.js" defer></script>
-    <!-- <script src="xhrRandomJokes.js" defer></script> -->
-    <!-- <script src="fetchRandomJokes.js" defer></script> -->
-    <!-- <script src="fetchRandomUsers.js" defer></script> -->
-    <script src="practice.js" defer></script>
+    <script src="fetchRandomJokes.js" defer></script>
+    <script src="fetchRandomUsers.js" defer></script>
+    <script src="spendTracker.js" defer></script>
+
 </head>
 <body>
   <div class="container">
@@ -28,37 +27,59 @@
       <p class="hide" id="warning">*Pls add a valid  item</p>
 
       <form id="my-form">
-          <input id="my-field" 
+        <input id='my-field' 
           type="text" 
+          placeholder="Add Items Here" 
           autocomplete="off"
-          placeholder="Add listing"
-          required>
-          <button>Add Item</button>
+          required > 
+
+        <button 
+          type="submit"
+          id="formBtn">
+          Add Item
+        </button>
       </form>
 
-      <h2 class="list-item">List Items</h2>
-      <ul id="my-list"></ul> 
-    </section>
-
-    <!-- ------ Chuck Norris Joke --------->
-    <section class="joke-card">
-        <h3>Chuck Norris Jokes</h3>
-        <p id="joke" class="joke">Loading...</p>
-        <button id="joke-btn">Next Random</button>
-    </section>
-
-    <!--------- Random Users ------------>
-    <section class="random-user">
-      <div class="text-center generator">
-        <h1 class="random-title">Random User Generator</h1>
-        <button id="generator-btn" class="user-btn" >
-          <span class="spinner hidden"></span>
-          Generate User
-        </button>
+      <div class="filter-area">
+        <i class="search fa-solid fa-magnifying-glass"></i>
+        <input
+        type="text"
+        id="filter" 
+        class="filter-items"
+        placeholder="Filter Items">
       </div>
-      <div id="user"></div>
-    </section>
 
+      <!-- <h2 class="list-item">List Items</h2> -->
+      <ul id="my-list">
+        <li>Shoe <button class="btnDelete"><i class="fa fa-xmark"></i></button></li>
+        <li>Banana <button class="btnDelete"><i class="fa fa-xmark"></i></button></li>
+        <li>Car Repair <button class="btnDelete"><i class="fa fa-xmark"></i></button></li>
+      </ul> 
+
+      <div class="clear-items">
+        <button id="clear">Clear All</button>
+      </div>
+    </section>
   </div>
+
+      <!-- ------ Chuck Norris Joke --------->
+      <section class="joke-card container">
+          <h3>Chuck Norris Jokes</h3>
+          <p id="joke" class="joke">Chuck Joke is Loading...</p>
+          <button id="joke-btn">Next Random</button>
+      </section>
+  
+      <!--------- Random Users ------------>
+      <section class="random-user container">
+        <div class="generator">
+          <h1 class="random-title">Random User Generator</h1>
+          <button id="generator-btn" class="user-btn" >
+            <span class="spinner hidden"></span>
+            Generate User
+          </button>
+        </div>
+        <div id="user"></div>
+      </section>
+
 </body>
 </html>
