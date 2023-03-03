@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listing-App</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
 
-    <script src="darkmode.js" defer></script>
-    <script src="fetchRandomJokes.js" defer></script>
-    <script src="fetchRandomUsers.js" defer></script>
-    <script src="spendTracker.js" defer></script>
+  <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" defer integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
+  <link rel="stylesheet" href="style.css">
+
+  <script src="darkmode.js" defer></script>
+  <script src="fetchRandomJokes.js" defer></script>
+  <script src="fetchRandomUsers.js" defer></script>
+  <script src="spendTracker.js" defer></script>
+  <script src="map.js" defer></script>
+  <title>Listing-App</title>
 </head>
-<body>
+<body> 
   <div class="container">
     <header class="nav">
-        <h1 class="title">SpendTracker</h1>
+        <h1 class="title">Listing-App</h1>
         <i class="fa fa-moon" id="mode"></i>
     </header>
 
@@ -49,11 +53,11 @@
         placeholder="Filter Items">
       </div>
 
-      <!-- <h2 class="list-item">List Items</h2> -->
+      <h2 class="list-item">List Items</h2>
       <ul id="my-list">
-        <li>Shoe <button class="btnDelete"><i class="fa fa-xmark"></i></button></li>
+        <!-- <li>Shoe <button class="btnDelete"><i class="fa fa-xmark"></i></button></li>
         <li>Banana <button class="btnDelete"><i class="fa fa-xmark"></i></button></li>
-        <li>Car Repair <button class="btnDelete"><i class="fa fa-xmark"></i></button></li>
+        <li>Car Repair <button class="btnDelete"><i class="fa fa-xmark"></i></button></li> -->
       </ul> 
 
       <div class="clear-items">
@@ -81,5 +85,20 @@
         <div id="user"></div>
       </section>
 
+      <!--------- Map Position ------------>
+      <div id="map-area">
+        <div class="map">
+          <span id="map" class="map-item"></span>
+        </div>
+        <div id="contact">
+          <div class="contact-title">Get in touch</div>
+          <div class="contact-phone">
+            <i class="fa fa-phone"> <a href="tel:+639553589102" class="contact-info">+63 955-358-9102</a></i>
+          </div>
+          <div class="contact-email">
+            <i class="fa fa-envelope"> <a href="mailto:vjunfel@gmail.com" class="contact-info">vjunfel@gmail.com</a> </i>
+          </div>
+        </div>
+      </div>
 </body>
-</html>
+</html> 
