@@ -7,9 +7,17 @@ const filter = document.querySelector('#filter');
 
 // Event Listener
 myForm.addEventListener('submit', createItem);
-myList.addEventListener('click', removeItemList);
+myList.addEventListener('click', onClickItem);
 clearAll.addEventListener('click', clearLists);
 filter.addEventListener('keyup', filterItem);
+document.addEventListener('DOMContentLoaded', displayItems);
+
+function displayItems() {
+	const itemsFromStorage = getItemsFromStorage();
+	itemsFromStorage.forEach((item) => {
+		addItemToDOM(item);
+	});
+}
 
 function createItem(e) {
 	e.preventDefault();
@@ -41,6 +49,13 @@ function addItemToDOM(newItem) {
 }
 
 function addToLocalStorage(newItem) {
+	let itemsFromStorage = getItemsFromStorage();
+
+	itemsFromStorage.push(newItem);
+	localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+}
+
+function getItemsFromStorage() {
 	let itemsFromStorage;
 
 	if (localStorage.getItem('items') === null) {
@@ -48,8 +63,7 @@ function addToLocalStorage(newItem) {
 	} else {
 		itemsFromStorage = JSON.parse(localStorage.getItem('items'));
 	}
-	itemsFromStorage.push(newItem);
-	localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+	return itemsFromStorage;
 }
 
 function createBtn(classes) {
@@ -66,13 +80,28 @@ function createIcon(classes) {
 	icon.className = classes;
 	return icon;
 }
-
-function removeItemList(e) {
+function onClickItem(e) {
 	if (e.target.parentElement.classList.contains('btnDelete')) {
-		e.target.parentElement.parentElement.remove();
+		removeItem(e.target.parentElement.parentElement);
 	}
+}
+
+function removeItem(item) {
+	item.remove();
+
+	removeItemFromStorage(item.textContent);
 
 	checkUI();
+}
+
+function removeItemFromStorage(item) {
+	let itemsFromStorage = getItemsFromStorage();
+
+	// Filter out item to be removed
+	itemsFromStorage = itemsFromStorage.filter((i) => i !== item);
+
+	// Re-set to localstorage
+	localStorage.setItem('items', JSON.stringify(itemsFromStorage));
 }
 
 function clearLists() {
@@ -81,6 +110,8 @@ function clearLists() {
 			myList.firstChild.remove();
 		}
 	}
+	// Clear local storage
+	localStorage.clear('items');
 	checkUI();
 }
 
@@ -88,13 +119,16 @@ function checkUI() {
 	const filter = document.querySelector('.filter-area');
 	const clear = document.querySelector('.clear-items');
 	const items = myList.querySelectorAll('li');
+	const listHeader = document.querySelector('.list-item');
 
 	if (items.length === 0) {
-		filter.classList.add('hide');
+		filter.style.display = 'none';
 		clear.style.display = 'none';
+		listHeader.classList.add('hide');
 	} else {
-		filter.classList.remove('hide');
+		filter.style.display = 'block';
 		clear.style.display = 'block';
+		listHeader.classList.remove('hide');
 	}
 }
 
@@ -112,3 +146,5 @@ function filterItem(e) {
 		}
 	});
 }
+
+checkUI();
