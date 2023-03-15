@@ -31,6 +31,9 @@ button{
     font-family: 'Pacifico', cursive;
     font-weight: 500;
 }
+.title:hover{
+    filter: drop-shadow(0 0 .5em #ffce1caa);
+}
 #listing{
     padding-bottom: 2rem;
 }
@@ -272,17 +275,18 @@ i{
 .contact-info{
     padding-left: 1rem;
     font-weight: 400;
-    color:#fff;
+}
+.fa{
+    filter: drop-shadow(0 0 .8em #d745ffaa);
 }
 
-
 /* ******************************************************* */
-
 @media (max-width: 1024px){ 
     #clear{
         width: 40%;
     }
 }
+
 @media (max-width: 768px){ 
     .container{
         max-width: 90%;
