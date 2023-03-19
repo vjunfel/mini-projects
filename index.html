@@ -11,20 +11,28 @@
 
   <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" defer integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
 
-  <link rel="stylesheet" href="style.css">
+  
+  <link rel="stylesheet" href="style.css" target="print">
 
-  <script src="darkmode.js" defer></script>
-  <script src="fetchRandomJokes.js" defer></script>
-  <script src="fetchRandomUsers.js" defer></script>
-  <script src="spendTracker.js" defer></script>
-  <script src="map.js" defer></script>
+
+  <!-- <script src="darkmode.js" defer></script> -->
+  <!-- <script src="fetchRandomJokes.js" defer></script> -->
+  <!-- <script src="fetchRandomUsers.js" defer></script> -->
+  <!-- <script src="spendTracker.js" defer></script> -->
+  <!-- <script src="map.js" defer></script> -->
+  <!-- <script src="callback.js" defer></script> -->
+  <script src="Emoji.js"></script>
+
   <title>Listing-App</title>
+
 </head>
 <body> 
   <div class="container">
     <header class="nav">
-        <h1 class="title">Listing-App</h1>
-        <i class="fa fa-moon" id="mode"></i>
+        <h1 class="title">Junfel Velasco</h1>
+        <span>
+          <i  class="fa fa-moon" id="mode"></i>
+        </span>
     </header>
 
     <section id="listing">
@@ -66,6 +74,24 @@
     </section>
   </div>
 
+      <!--------- Emoje Angry ------------>
+      <section class="ratings container">
+        <div class="face">
+          <i class="far fa-face-angry"></i>
+          <i class="far fa-face-frown"></i>
+          <i class="far fa-face-meh"></i>
+          <i class="far fa-face-smile"></i>
+          <i class="far fa-face-laugh"></i>
+        </div>
+        <div class="stars">
+          <i class="fas fa-star active-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </div>
+      </section>
+
       <!-- ------ Chuck Norris Joke --------->
       <section class="joke-card container">
           <h3>Chuck Norris Jokes</h3>
@@ -100,5 +126,14 @@
           </div>
         </div>
       </div>
+
+    
+
+
+      <script>
+        
+
+        
+      </script>
 </body>
 </html> 
