@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin-Flip-Game</title>
+    <style>
+        *{
+          background-color: #333;
+          color: #fff;
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        #head{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: 1px solid gray;
+          background-color: rgb(0, 117, 35);
+          cursor: pointer;
+          width: 48%;
+        }
+        #tail{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: 1px solid gray;
+          background-color: rgb(0, 106, 255);
+          cursor: pointer;
+          width: 48%;
+        }
+        #head:active, #tail:active{
+          background-color: rgb(0, 106, 255);
+        }
+        #play{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: none;
+          background-color: rgb(255, 0, 0);
+          cursor: pointer;
+          margin: 20px 0;
+          width: 100%;
+        }
+        h1{
+          margin: 20px;
+          font-style: italic;
+          text-decoration: underline;
+          font-size: xx-large
+        }
+        p{
+          color:rgb(255, 255, 255);
+          margin: 20px;
+        }
+       
+        .message{
+          color: gold;
+          font-size: x-large;
+        }
+        .container{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid gray;
+          border-radius: 10px;
+          width: 350px;
+          margin: 30px auto;
+        }
+        .myName{
+          border: 1px solid gray;
+          border-radius: 5px;
+          height: 25px;
+          width: 200px;
+          margin: 10px 0px 30px 0px;
+          padding: 5px;
+        }
+        .btn{
+          border: 1px solid transparent;
+          border-radius: 50%;
+          padding: 5px 10px;
+          margin: 15px 5px;
+          cursor:pointer;
+          width: 65px;
+        }
+        .btn:hover{
+          transform: scale(1.05);
+          border: 1px solid white;
+          transition: 2ms ease-in-out
+        }
+        .again{
+          border: 1px solid gray;
+          border-radius: 5px;
+          padding: 10px;
+          margin: 5px 5px 25px 5px;
+          cursor: pointer;
+        }
+        .again:hover{
+          background-color: #fff;
+          color:rgb(0, 106, 255)
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Coin-Flip-Game</h1>
+        
+        <div>
+            <div>
+              <button id="head">Head</button>
+              <button id="tail">Tail</button>
+            </div>
+            <button id="play">Play</button>
+        </div>
+        <p class="message"></p>
+        <button class='again' onClick="window.location.reload();">Play Again!</button>
+      </div>
+
+      <script>
+      // --------------- Coin-Flip-Game --------------
+      const head = document.querySelector('#head');
+      const tail = document.querySelector('#tail');
+      const play = document.querySelector('#play');
+      const message = document.querySelector('.message')
+      const myName = document.querySelector('.myName')
+      const myForm = document.querySelector('#myForm')
+      let guess = '';
+
+
+      const headPick = head.addEventListener('click', () => {
+        console.log('You choose Head');
+        guess = 'Head';
+        head.style.backgroundColor = 'gold'
+      })
+
+      const tailPick = tail.addEventListener('click', () => {
+        console.log('You choose Tail');
+        guess = 'Tail';
+        tail.style.backgroundColor = 'gold'
+      })
+      
+      function randomNumber(){
+        const random = Math.round(Math.random()*100)
+        const result = random > 50 ? 'Head' : 'Tail';
+        console.log(result)
+
+        head.style.backgroundColor = 'green'
+        tail.style.backgroundColor = 'blue'
+
+
+        if(result === guess){
+            console.log('You Win!')
+            message.innerHTML = `Congrats ${name}, You Win!`
+        } else {
+          console.log('You\'ve LOST!')
+          message.innerHTML = `Sorry ${name}, You\'ve LOST!`
+        }
+      }
+      
+      play.addEventListener('click', randomNumber)
+
+    </script>
+</body>
+</html>
