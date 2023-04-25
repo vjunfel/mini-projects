@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock-Paper-Scissors</title>
+
+    <style>
+        *{
+          background-color: #333;
+          color: #fff;
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        #head{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: 1px solid gray;
+          background-color: rgb(0, 117, 35);
+          cursor: pointer;
+          width: 48%;
+        }
+        #tail{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: 1px solid gray;
+          background-color: rgb(0, 106, 255);
+          cursor: pointer;
+          width: 48%;
+        }
+        #head:active, #tail:active{
+          background-color: rgb(0, 106, 255);
+        }
+        #play{
+          padding: 10px 20px;
+          border-radius: 5px;
+          border: none;
+          background-color: rgb(255, 0, 0);
+          cursor: pointer;
+          margin: 20px 0;
+          width: 100%;
+        }
+        h1{
+          margin: 20px;
+          font-style: italic;
+          text-decoration: underline;
+          font-size: xx-large
+        }
+        p{
+          color:rgb(255, 255, 255);
+          margin: 20px;
+        }
+       
+        .message{
+          color: gold;
+          font-size: x-large;
+        }
+        .container{
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border: 1px solid gray;
+          border-radius: 10px;
+          width: 350px;
+          margin: 30px auto;
+        }
+        .btn{
+          border: 1px solid transparent;
+          border-radius: 50%;
+          padding: 5px 10px;
+          margin: 15px 5px;
+          cursor:pointer;
+          width: 65px;
+        }
+        .btn:hover{
+          transform: scale(1.05);
+          border: 1px solid white;
+          transition: 2ms ease-in-out
+        }
+        .rps{
+          margin-top: 20px;
+        }
+        .result{
+          color:rgb(255, 0, 0);
+          padding: 5px 15px;
+          text-transform: uppercase;
+          font-size: xx-large;
+        }
+        .comment{
+          /* margin: 10px; */
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          text-align: center;
+        }
+        .comp{
+          color:aquamarine;
+          text-transform: capitalize;
+        }
+        .again{
+          border: 1px solid gray;
+          border-radius: 5px;
+          padding: 10px;
+          margin: 5px 5px 25px 5px;
+          cursor: pointer;
+        }
+        .again:hover{
+          background-color: #fff;
+          color:rgb(0, 106, 255)
+        }
+        img{
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="rps">Rock Paper Scissors</h2>
+        <div>
+          <button class='btn' onclick="startPlay('rock')">
+            <img src="./images/Rock_Icon.png" alt="" srcset="">
+          </button>
+          <button class='btn' onclick="startPlay('paper')">
+            <img src="./images/Paper_Icon.png" alt="" srcset="">
+          </button>
+          <button class='btn' onclick="startPlay('scissors')">
+            <img src="./images/Scissors_Icon.png" alt="" srcset="">
+          </button>
+    
+          <div class="comment"> 
+            <p>
+              <span>Computer:</span>
+              <span class="comp"></span>
+            </p>
+            <p>
+              <!-- <span>Result:</span> -->
+              <span class="result"> </span>
+            </p>
+            <button class='again' onClick="window.location.reload();">
+              Play Again!
+            </button>
+            <button class='again' id='reset' onClick="window.location.reload();">
+              RESET SCORE
+            </button>
+    
+          </div>
+        </div>
+      </div>
+
+    <script>
+      // --------------- Rock-Paper-Scissors ----------------
+      // *********Algorithm*********
+      // Create computer pick
+      // Compare to your pick
+      // Display result
+
+      const comp = document.querySelector('.comp');
+      const output = document.querySelector('.result');
+      const randomPick = Math.random();
+      const computerMove = pickComputer();
+      const reset = document.querySelector('#reset');
+      let result = '';
+      
+      reset.addEventListener('click', () => {
+        localStorage.removeItem('score')
+      });
+
+      let score = JSON.parse(localStorage.getItem('score')) || { 
+        wins: 0, 
+        losses: 0,
+        ties: 0
+      };
+      
+      function pickComputer(){
+        let computerMove;
+
+        if(randomPick >= 0 && randomPick <= 1/3){
+          computerMove = 'rock';
+        } 
+        else if(randomPick > 1/3 && randomPick < 2/3){
+          computerMove = 'paper';
+        } 
+        else if(randomPick >= 2/3 && randomPick < 1){
+          computerMove = 'scissors';
+        }
+        return computerMove;
+      }
+
+      function startPlay(playerMove){
+        if(playerMove === 'rock'){
+          computerMove === 'rock' ? result = 'Tie' : null;
+          computerMove === 'paper' ? result = 'You Lose': null;
+          computerMove === 'scissors' ? result = 'You Win' : null;
+        } 
+        else if(playerMove === 'paper'){
+          computerMove === 'rock' ? result = 'You Win' : null;
+          computerMove === 'paper' ? result = 'Tie': null;
+          computerMove === 'scissors' ? result = 'You Lose' : null;
+        }
+         else if(playerMove === 'scissors') {
+          computerMove === 'rock' ? result = 'You Lose' : null;
+          computerMove === 'paper' ? result = 'You Win': null;
+          computerMove === 'scissors' ? result = 'Tie' : null;
+        }
+
+        if(result === 'You Win'){
+          score.wins += 1;
+        } else if( result === 'You Lose'){
+          score.losses += 1;
+        } else if(result === 'Tie'){
+          score.ties += 1;
+        }
+
+        comp.innerHTML = computerMove;
+        output.innerHTML = result;
+        (localStorage.setItem('score', JSON.stringify(score)))
+
+        console.log(score)
+      }
+    </script>
+    
+</body>
+</html>
