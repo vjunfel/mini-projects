@@ -80,8 +80,8 @@ function startPlay(playerMove){
     buttonScissors.disabled = 'true';
     buttonScissors.style.border = 'none';
 
-    comp.innerHTML = `COMP <img src="./images/${computerMove}_Icon.png"         
-        class="pick""> vs  <img src="./images/${playerMove}_Icon.png" class="pick"> YOU `;
+    comp.innerHTML = `COMP <img src="./images/${computerMove}_icon.png"         
+        class="pick""> vs  <img src="./images/${playerMove}_icon.png" class="pick"> YOU `;
     output.innerHTML = result;
     (localStorage.setItem('score', JSON.stringify(score)));
 
@@ -89,9 +89,9 @@ function startPlay(playerMove){
     scoreCardUpdate();
     console.log(score);
 
-    setTimeout(()=>{
-      window.location.reload();
-    }, 10000)
+    // setTimeout(()=>{
+    //   window.location.reload();
+    // }, 10000)
 }
 
 function scoreCardUpdate(){
@@ -99,25 +99,3 @@ function scoreCardUpdate(){
   Ties = ${score.ties}`);
 }
 scoreCardUpdate();
-// output.innerHTML = result;
-
-
-// Get input value **********************************************************
-// function getValue(){
-//   const inputElement = document.querySelector('#input').value;
-//   const outputValue = document.querySelector('#output-value');
-
-//   const inputValue = inputElement.toUpperCase().trim();
-  
-//   console.log(inputValue);
-
-//   if(inputValue === 'JUNFEL'){
-//     outputValue.innerText = inputValue + ' - GOOD JOB!'
-//   }
-//   else if(inputValue === 'JENALYN'){
-//     outputValue.innerText = inputValue + ' - GREAT!'
-//   }
-//   else{
-//     outputValue.innerText = inputElement;
-//   }
-// }
