@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="container">
-        <h2 class="rps">Rock Paper Scissors</h2>
+        <h2 class="rps-title">Rock-Paper-Scissors</h2>
         <div>
           <button id='rock' class="btn">
             <img src="./images/Rock_Icon.png">
@@ -26,12 +26,11 @@
           </button>
 
           <div class="comment"> 
-
             <button class='play-again' onClick="window.location.reload()">
               Play Again!
             </button>
 
-            <hr>
+            <!-- <hr> -->
 
             <span class="comp"></span>
             <span class="result"> </span>
@@ -43,21 +42,9 @@
             <button class='reset' id='reset' onClick="window.location.reload();">
               RESET SCORE
             </button>
-
-            <input id='input' 
-              autocomplete="off"
-              placeholder="Type Here" 
-              class="input" 
-              onkeyup="getValue()">
-
-            <p id="output-value">
-
-            </p>
-    
           </div>
         </div>
       </div>
 
-    
 </body>
 </html>
